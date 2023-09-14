@@ -25,11 +25,33 @@ window.addEventListener('DOMContentLoaded', () => {
 
     // getWeather();
 
+    //searchInput form
+
     const searchForm = document.querySelector('.search-input'),
         searchInput = searchForm.querySelector('.search-input > input'),
         searchBtn = searchForm.querySelector('.search-input > button');
 
     searchBtn.addEventListener('click', (event) => {
         event.preventDefault();
+    });
+
+    //weather output (buttons and output field itself)
+
+    const weatherButtons = document.querySelectorAll('.weather-button'),
+        weatherWrapper = document.querySelector('.weather-output__wrapper');
+
+    function buttonsReset() {
+        weatherButtons.forEach((item) => {
+            if (item.classList.contains('button-active')) {
+                item.classList.remove('button-active');
+            }
+        });
+    }
+
+    weatherWrapper.addEventListener('click', (event) => {
+        if (event.target.classList.contains('weather-button')) {
+            buttonsReset();
+            event.target.classList.add('button-active');
+        }
     });
 });

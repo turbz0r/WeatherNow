@@ -16,17 +16,11 @@
 body,
 html {
     background: #222222;
-    scrollbar-gutter: stable both-edges;
     font-family: 'Raleway', sans-serif;
 }
 
 body::-webkit-scrollbar {
-    background-color: transparent;
-    width: 12px;
-}
-body::-webkit-scrollbar-thumb {
-    border-radius: 20px;
-    background-color: #434242;
+    display: none;
 }
 
 h1,
@@ -38,8 +32,9 @@ a {
 }
 
 .container {
+    position: relative;
     margin: 0 auto;
-    max-width: 1044px;
+    max-width: 1200px;
 }
 
 /* header */
@@ -69,8 +64,9 @@ header {
 }
 
 /* main */
-main {
-    padding-top: 50px;
+
+.input-wrapper {
+    padding-top: 150px;
 }
 
 .search-input {
@@ -78,11 +74,12 @@ main {
     width: 450px;
     height: 40px;
     border-radius: 40px;
-    background: #434242;
+    background: #222222;
     /* border: 1px solid #22a39f; */
 }
 
 .search-input > input {
+    box-shadow: none;
     background: transparent;
     width: 330px;
     height: 100%;
@@ -93,10 +90,14 @@ main {
     border-top-style: none;
 
     color: #f3efe0;
+    font-size: 1em;
 }
 
 .search-input input:focus {
     outline: 0;
+}
+.search-input input:focus::placeholder {
+    color: transparent;
 }
 
 .search-input input::-webkit-input-placeholder {
@@ -137,4 +138,51 @@ main {
 }
 .search-input > button:hover {
     background: #22a39f;
+}
+
+.search-background {
+    position: absolute;
+    min-width: 100%;
+    -webkit-mask-image: linear-gradient(180deg, rgba(0, 0, 0, 0.8), rgba(0, 0, 0, 0));
+    mask-image: linear-gradient(180deg, rgba(0, 0, 0, 0.8), rgba(0, 0, 0, 0));
+}
+.search-background > img {
+    object-fit: cover;
+    min-width: 100%;
+    max-height: 400px;
+    filter: brightness(80%);
+}
+
+.weather-output__wrapper {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-top: 150px;
+    gap: 5em;
+}
+
+.weather-buttons__wrapper {
+    display: flex;
+    gap: 0.5em;
+}
+
+.weather-button {
+    white-space: nowrap;
+    color: #f3efe0;
+
+    height: 30px;
+
+    padding: 0px 10px;
+
+    border: none;
+    border-radius: 3px;
+    background: #434242;
+    cursor: pointer;
+
+    transition: all 0.3s;
+}
+
+.button-active {
+    border: 1px solid #22a39f;
+    background: #222222;
 }

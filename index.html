@@ -21,12 +21,34 @@
             <div class="separator"></div>
         </header>
         <main>
+            <div class="search-background">
+                <img src="src/img/weather-back.webp" alt="" />
+            </div>
             <div class="container">
                 <div class="input-wrapper">
                     <form class="search-input">
-                        <input type="text" placeholder="Enter your localization..." required style="box-shadow: none" />
+                        <input type="text" placeholder="Enter your localization..." required />
                         <button type="submit">Search</button>
                     </form>
+                </div>
+                <div class="weather-output__wrapper">
+                    <div class="weather-type-buttons">
+                        <div class="weather-buttons__wrapper">
+                            <button class="weather-button button-active">Current Weather</button
+                            ><button class="weather-button">5 Day Weather</button>
+                        </div>
+                    </div>
+                    <div class="weather-output">
+                        <div class="weather-panel">
+                            <!-- todo -->
+                            <div class="weather-panel__city"></div>
+                            <div class="weather-panel__temp">
+                                <h2>${temp}(C*)</h2>
+                                <img src="" alt="" />
+                            </div>
+                            <div class="weather-panel__info"></div>
+                        </div>
+                    </div>
                 </div>
             </div>
         </main>
