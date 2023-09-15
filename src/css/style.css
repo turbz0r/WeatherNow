@@ -17,6 +17,7 @@ body,
 html {
     background: #222222;
     font-family: 'Raleway', sans-serif;
+    height: 2000px;
 }
 
 body::-webkit-scrollbar {
@@ -41,6 +42,7 @@ a {
 
 header {
     width: 100%;
+    white-space: nowrap;
 }
 
 .header-content {
@@ -185,4 +187,50 @@ header {
 .button-active {
     border: 1px solid #22a39f;
     background: #222222;
+}
+
+.weather-panel {
+    color: #f3efe0;
+}
+.weather-panel .separator {
+    border-color: #22a39f;
+}
+
+.weather-panel__wrapper {
+    padding: 15px;
+    border: 1px solid #22a39f;
+    border-radius: 5px;
+}
+
+.weather-panel__city {
+    font-size: 1.2em;
+    font-weight: bold;
+    text-align: center;
+    padding-top: 5px;
+    padding-bottom: 10px;
+}
+.weather-panel__temp {
+    display: flex;
+    align-items: center;
+    justify-content: space-evenly;
+    gap: 1em;
+    padding: 15px 0px;
+}
+.weather-panel__description {
+    text-align: center;
+    padding-bottom: 10px;
+}
+.weather-panel__info {
+    padding-top: 15px;
+    display: flex;
+    flex-direction: column;
+    gap: 0.8em;
+}
+.weather-panel__info > div {
+    font-size: 0.8em;
+    font-weight: bold;
+}
+.weather-panel__info span {
+    font-size: 1.1em;
+    font-weight: 500;
 }
