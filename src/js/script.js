@@ -4,13 +4,14 @@ window.addEventListener('DOMContentLoaded', () => {
     //main request -> panel creation functionality
 
     async function getWeather(cityName) {
+        let response;
         try {
-            const response = await axios.get(
+            response = await axios.get(
                 `https://api.openweathermap.org/data/2.5/weather?q=${cityName}&appid=b209f82168a79c7d26725e6d0de7010b`
             );
-            console.log(response);
+            return response;
         } catch (error) {
-            console.error(error);
+            throw new Error(`Error ocurred.\n Could not fetch data.\n Status: ${response.status}`);
         }
     }
 
@@ -40,23 +41,24 @@ window.addEventListener('DOMContentLoaded', () => {
             <div class="weather-panel__city">${this.itemName}</div>
             <div class="separator"></div>
             <div class="weather-panel__temp">
-                <h1>${this.itemTemperature}&#176;</h1>
+                <h1>${(+this.itemTemperature - 272.15).toFixed()}&#176;</h1>
                 <img src="https://openweathermap.org/img/wn/${this.itemIcon}.png" alt="" />
             </div>
             <div class="weather-panel__description">${this.itemDescription}</div>
             <div class="separator"></div>
             <div class="weather-panel__info">
                 <div>
-                    Humidity:<span>${this.itemHumidity}%</span>
+                    Humidity:<span> ${this.itemHumidity}</span> %
                 </div>
                 <div>
-                    Pressure:<span>${this.itemPressure}hPa</span>
+                    Pressure:<span> ${this.itemPressure}</span> hPa
                 </div>
                 <div>
-                    Wind speed:<span>${this.itemWind}m/s</span>
+                    Wind speed:<span> ${this.itemWind}</span> m/s
                 </div>
             </div>
         </div>`;
+            weatherOutput.append(card);
         }
     }
 
@@ -66,13 +68,36 @@ window.addEventListener('DOMContentLoaded', () => {
         searchInput = searchForm.querySelector('.search-input > input'),
         searchBtn = searchForm.querySelector('.search-input > button');
 
+    function fixedSearchValue(item) {
+        const string = item.toLowerCase();
+
+        return `${string[0].toUpperCase()}${string.slice(1)}`;
+    }
+
     searchBtn.addEventListener('click', (event) => {
         event.preventDefault();
+
+        if (searchInput.value.length < 2) {
+            return false;
+        }
+
+        getWeather(fixedSearchValue(searchInput.value)).then((response) => {
+            new WeatherCard(
+                response.data.name,
+                response.data.main.temp,
+                response.data.weather[0].icon,
+                response.data.weather[0].description,
+                response.data.main.humidity,
+                response.data.main.pressure,
+                response.data.wind.speed
+            ).appendCard();
+        });
     });
 
     //weather output (buttons and output field itself)
 
     const weatherButtons = document.querySelectorAll('.weather-button'),
+        weatherOutput = document.querySelector('.weather-output'),
         weatherWrapper = document.querySelector('.weather-output__wrapper');
 
     function buttonsReset() {

@@ -52,12 +52,40 @@ header {
     padding-top: 10px;
     padding-bottom: 10px;
 }
+
+.header-content > img {
+    animation: load-in-image 1.3s ease;
+}
+
 .header-content > div {
     display: flex;
     flex-direction: column;
     justify-content: center;
 
     padding-left: 10px;
+
+    animation: load-in-div 1.3s ease;
+}
+
+@keyframes load-in-image {
+    0% {
+        opacity: 0;
+        transform: translateX(-100%);
+    }
+    100% {
+        opacity: 1;
+        transform: translateX(0%);
+    }
+}
+@keyframes load-in-div {
+    0% {
+        opacity: 0;
+        transform: translateX(+50%);
+    }
+    100% {
+        opacity: 1;
+        transform: translateX(0%);
+    }
 }
 
 .separator {
@@ -153,6 +181,17 @@ header {
     min-width: 100%;
     max-height: 400px;
     filter: brightness(80%);
+
+    animation: back-load-in 1.5s ease-in;
+}
+
+@keyframes back-load-in {
+    0% {
+        opacity: 0;
+    }
+    100% {
+        opacity: 1;
+    }
 }
 
 .weather-output__wrapper {
@@ -228,9 +267,8 @@ header {
 }
 .weather-panel__info > div {
     font-size: 0.8em;
-    font-weight: bold;
 }
 .weather-panel__info span {
     font-size: 1.1em;
-    font-weight: 500;
+    font-weight: bold;
 }
