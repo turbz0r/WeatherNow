@@ -111,8 +111,6 @@ header {
     border: 1px solid transparent;
 
     animation: input-slide-in 1.3s;
-
-    transition: border 0.1s linear;
 }
 
 @keyframes input-slide-in {
@@ -291,37 +289,14 @@ header {
 
 .weather-output {
     display: flex;
+}
+
+.weather-panels {
+    display: none;
     gap: 2em;
 }
-
-/* panel reappear animation TODO */
-
-.slide-in {
-    animation: panels-slide-in 0.5s ease;
-}
-.slide-out {
-    animation: panels-slide-out 0.5s ease;
-}
-
-@keyframes panels-slide-in {
-    0% {
-        opacity: 0;
-        transform: translateX(-100%);
-    }
-    100% {
-        opacity: 1;
-        transform: translateX(0%);
-    }
-}
-@keyframes panels-slide-out {
-    0% {
-        opacity: 1;
-        transform: translateX(0%);
-    }
-    100% {
-        opacity: 0;
-        transform: translateX(100%);
-    }
+.panels-active {
+    display: flex;
 }
 
 .weather-panel {
@@ -344,6 +319,14 @@ header {
     padding-top: 5px;
     padding-bottom: 10px;
 }
+
+.weather-panel__date {
+    font-size: 1.1em;
+    text-align: center;
+    padding-top: 5px;
+    padding-bottom: 10px;
+}
+
 .weather-panel__temp {
     display: flex;
     align-items: center;

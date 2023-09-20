@@ -32,41 +32,16 @@
                     </form>
                     <div class="input-error"><p>Couldn't find searched city/village.</p></div>
                 </div>
-                <div class="weather-output__wrapper weather-active">
+                <div class="weather-output__wrapper">
                     <div class="weather-type-buttons">
                         <div class="weather-buttons__wrapper">
                             <button id="btn-current" class="weather-button button-active">Current Weather</button
                             ><button id="btn-fivedays" class="weather-button">5 Day Weather</button>
-                            <!-- TODO buttons > weather panels connection + animations TODO -->
                         </div>
                     </div>
                     <div class="weather-output">
-                        <div class="weather-panel">
-                            <div class="weather-panel__wrapper">
-                                <div class="weather-panel__city"></div>
-                                <div class="separator"></div>
-                                <div class="weather-panel__temp">
-                                    <h1>&#176;</h1>
-                                    <img src="" alt="" />
-                                </div>
-                                <div class="weather-panel__description"></div>
-                                <div class="separator"></div>
-                                <div class="weather-panel__info">
-                                    <div>
-                                        Humidity:
-                                        <span>%</span>
-                                    </div>
-                                    <div>
-                                        Pressure:
-                                        <span>hPa</span>
-                                    </div>
-                                    <div>
-                                        Wind speed:
-                                        <span>m/s</span>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
+                        <div class="weather-panels panels-active" data-weather-days="1"></div>
+                        <div class="weather-panels" data-weather-days="5" data-fetched="false"></div>
                     </div>
                 </div>
             </div>
