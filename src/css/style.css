@@ -19,7 +19,6 @@ body,
 html {
     background: #222222;
     font-family: 'Raleway', sans-serif;
-    height: 2000px;
 }
 
 body::-webkit-scrollbar {

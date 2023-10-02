@@ -151,7 +151,13 @@ window.addEventListener('DOMContentLoaded', () => {
     }
 
     function filterList(arr) {
-        return arr.filter((element, index) => index % 8 === 7);
+        return arr.filter((item) => {
+            let result = item.dt_txt.split(' ');
+            if (result[1] === '15:00:00') {
+                return item;
+            }
+        });
+        // return arr.filter((element, index) => index % 8 === 7);
     }
 
     weatherButtonsWrapper.addEventListener('click', (event) => {
